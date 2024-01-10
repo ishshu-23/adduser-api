@@ -31,7 +31,7 @@ setInterval(() => {
         user1.res.json(channelname);
         user2.res.json(channelname);
     }
-}, 1000);
+}, 10);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
