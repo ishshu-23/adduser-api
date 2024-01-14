@@ -5,9 +5,9 @@ const { users } = require('./models/users.model.js');
 
 const app = express();
 
-app.get("/", (req, res) => {
+app.get("/hello", (req, res) => {
     const jsonResponse = {
-        message: "Server is working",
+        message: "hello from server",
     };
     res.json(jsonResponse);
 });
@@ -33,7 +33,5 @@ setInterval(() => {
     }
 }, 1000);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is listening on Port ${PORT}`);
-});
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Listening on port ${port}`));
