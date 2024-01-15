@@ -1,10 +1,10 @@
 const { countries, countriesIndex, getCountryIndex } = require('./countries.model.js');
 
-var users = [[], [], []];
+var users = Array.from({ length: countries.length }, () => []);
 // function callback(res, userid1, userid2) {
 //     res.send(userid1 + userid2);
 // }
-// users = [
+// users = [    
 //     [
 //         {
 //             userid: 'albania1',
