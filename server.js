@@ -15,7 +15,7 @@ app.get("/hello", (req, res) => {
 app.use("/channel", channelRouter);
 
 setInterval(() => { 
-    console.log(userCountriesIndexes);
+    // console.log(userCountriesIndexes);
     var i1 = Math.floor(Math.random() * userCountriesIndexes.length);
     var i2 = Math.floor(Math.random() * userCountriesIndexes.length);
     
