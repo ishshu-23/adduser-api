@@ -15,6 +15,7 @@ app.get("/hello", (req, res) => {
 app.use("/channel", channelRouter);
 
 setInterval(() => { 
+while(true){
     // console.log(userCountriesIndexes);
     var i1 = Math.floor(Math.random() * userCountriesIndexes.length);
     var i2 = Math.floor(Math.random() * userCountriesIndexes.length);
@@ -52,7 +53,7 @@ setInterval(() => {
             userCountriesIndexes.splice(inx, 1);
         }
     }
-}, 1000);
+}
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}`));
