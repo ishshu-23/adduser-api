@@ -52,7 +52,7 @@ setInterval(() => {
             userCountriesIndexes.splice(inx, 1);
         }
     }
-}, 10);
+}, 1);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}`));
