@@ -18,7 +18,6 @@ setInterval(() => {
     // console.log(userCountriesIndexes);
     var i1 = Math.floor(Math.random() * userCountriesIndexes.length);
     var i2 = Math.floor(Math.random() * userCountriesIndexes.length);
-    
 
     if (i1 === i2 || userCountriesIndexes[i1].length === 0 || userCountriesIndexes[i2].length === 0) {
     } else {
