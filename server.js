@@ -15,11 +15,10 @@ app.get("/hello", (req, res) => {
 let uid = 0;
 
 app.get("/getuid", (req, res) => {
-    uid = uid + 1;
-    const uidJsonResponse = {
-        uid: uid.toString(),
+    const jsonResponse = {
+        message: "Get uid from server",
     };
-    res.json(uidJsonResponse);
+    res.json(jsonResponse);
 });
 
 
