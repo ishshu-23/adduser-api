@@ -5,9 +5,9 @@ const { users } = require('./models/users.model.js');
 
 const app = express();
 
-app.get("/getuid", (req, res) => {
+app.get("/hello", (req, res) => {
     const jsonResponse = {
-        message: "getuid from server",
+        message: "hello from server",
     };
     res.json(jsonResponse);
 });
