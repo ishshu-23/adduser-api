@@ -11,7 +11,15 @@ app.get("/hello", (req, res) => {
     };
     res.json(jsonResponse);
 });
+let uid = 0;
 
+app.get("/getuid", (req, res) => {
+    uid = uid + 1;
+    const uidJsonResponse = {
+        uid: uid.toString(),
+    };
+    res.json(uidJsonResponse);
+});
 app.use("/channel", channelRouter);
 
 setInterval(() => { 
