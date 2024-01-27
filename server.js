@@ -5,22 +5,12 @@ const { users } = require('./models/users.model.js');
 
 const app = express();
 
-app.get("/hello", (req, res) => {
-    const jsonResponse = {
-        message: "hello from server",
-    };
-    res.json(jsonResponse);
-});
-
-let uid = 0;
-
 app.get("/getuid", (req, res) => {
     const jsonResponse = {
-        message: "Get uid from server",
+        message: "getuid from server",
     };
     res.json(jsonResponse);
 });
-
 
 app.use("/channel", channelRouter);
 
