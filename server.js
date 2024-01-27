@@ -19,10 +19,11 @@ app.get("/getuid", (req, res) => {
     res.send(uid.toString());
 });
 
+
 app.use("/channel", channelRouter);
 
 setInterval(() => { 
-    console.log(userCountriesIndexes);
+    // console.log(userCountriesIndexes);
     
     if(userCountriesIndexes.length == 1){
         var userCountriesIndexesObj = userCountriesIndexes[0];
