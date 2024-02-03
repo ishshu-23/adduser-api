@@ -14,7 +14,7 @@ app.get("/hello", (req, res) => {
     res.json(jsonResponse);
 });
 const mutex = new Mutex();
-let uid = 0;
+let uid = 753951;
 app.get("/getuid", async (req, res) => {
     let uidResponse;
     const release = await mutex.acquire();
