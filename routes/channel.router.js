@@ -17,7 +17,7 @@ channelRouter.get("/getchannelname/:userid/:gender/:country", (req, res)=>{
     const userid = req.params.userid;
     const country = req.params.country;
     addUser(res, userid, country);
-    console.log(users);
+    // console.log(users);
 })
 
 module.exports = channelRouter;
