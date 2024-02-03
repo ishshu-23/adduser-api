@@ -34,7 +34,7 @@ setInterval(() => {
             var user2 = users[index].shift();
             var userid1 = user1.userid;
             var userid2 = user2.userid;
-            console.log("User1 id", userid1, "index1: ", index1, "User2 id", userid2, "index2: ", index2);
+            // console.log("User1 id", userid1, "index1: ", index1, "User2 id", userid2, "index2: ", index2);
             var channelname = {
                 userid1: userid1,
                 userid2: userid2
@@ -46,6 +46,7 @@ setInterval(() => {
             if(userCountriesIndexesObj.quantity === 0){
                 userCountriesIndexes.splice(0, 1);
             }
+            console.log(userCountriesIndexes);
         }
     }else{
         var i1 = Math.floor(Math.random() * userCountriesIndexes.length);
@@ -68,7 +69,7 @@ setInterval(() => {
         
             var userid1 = user1.userid;
             var userid2 = user2.userid;
-            console.log("User1 id", userid1, "index1: ", index1, "User2 id", userid2, "index2: ", index2);
+            // console.log("User1 id", userid1, "index1: ", index1, "User2 id", userid2, "index2: ", index2);
             var channelname = {
                 userid1: userid1,
                 userid2: userid2
@@ -84,6 +85,7 @@ setInterval(() => {
                 var inx = userCountriesIndexes.indexOf(obj2);
                 userCountriesIndexes.splice(inx, 1);
             }
+            console.log(userCountriesIndexes);
         }
     }
     
