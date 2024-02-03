@@ -1,4 +1,6 @@
 const express = require("express");
+const { Mutex } = require('async-mutex');
+
 const channelRouter = require("./routes/channel.router");
 const { userCountriesIndexes } = require('./models/countries.model.js');
 const { users } = require('./models/users.model.js');
@@ -11,12 +13,19 @@ app.get("/hello", (req, res) => {
     };
     res.json(jsonResponse);
 });
+const mutex = new Mutex();
 let uid = 0;
-
-app.get("/getuid", (req, res) => {
-    uid = uid + 1;
+app.get("/getuid", async (req, res) => {
+    let uidResponse;
+    const release = await mutex.acquire();
+    try {
+        uid++;
+        uidResponse = uid;
+    } finally {
+        release();
+    }
     const uidJsonResponse = {
-        uid: uid.toString(),
+        uid: uidResponse.toString(),
     };
     res.json(uidJsonResponse);
 });
@@ -34,8 +43,8 @@ setInterval(() => {
             var user2 = users[index].shift();
             var userid1 = user1.userid;
             var userid2 = user2.userid;
-            console.log("Userid 1", userid1, "index 1: ", index1);
-            console.log("Userid 2", userid2, "index 2: ", index2);
+            console.log("User1 id", userid1, "index1: ", index1);
+            console.log("User2 id", userid2, "index2: ", index2);
             var channelname = {
                 userid1: userid1,
                 userid2: userid2
@@ -70,8 +79,8 @@ setInterval(() => {
         
             var userid1 = user1.userid;
             var userid2 = user2.userid;
-            console.log("Userid 1", userid1, "index 1: ", index1);
-            console.log("Userid 2", userid2, "index 2: ", index2);
+            console.log("User1 id", userid1, "index1: ", index1);
+            console.log("User2 id", userid2, "index2: ", index2);
             var channelname = {
                 userid1: userid1,
                 userid2: userid2
