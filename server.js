@@ -21,13 +21,13 @@ app.get("/getuid", async (req, res) => {
     try {
         uid++;
         uidResponse = uid;
+        const uidJsonResponse = {
+        uid: uidResponse.toString(),
+        };
+        res.json(uidJsonResponse);
     } finally {
         release();
     }
-    const uidJsonResponse = {
-        uid: uidResponse.toString(),
-    };
-    res.json(uidJsonResponse);
 });
 app.use("/channel", channelRouter);
 
