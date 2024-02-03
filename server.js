@@ -19,7 +19,7 @@ app.get("/getuid", async (req, res) => {
     let uidResponse;
     const release = await mutex.acquire();
     try {
-        uid++;
+        uid = uid + 1;
         uidResponse = uid;
         const uidJsonResponse = {
         uid: uidResponse.toString(),
