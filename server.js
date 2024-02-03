@@ -34,7 +34,8 @@ setInterval(() => {
             var user2 = users[index].shift();
             var userid1 = user1.userid;
             var userid2 = user2.userid;
-            console.log("User1 id", userid1, "index1: ", index1, "User2 id", userid2, "index2: ", index2);
+            console.log("Userid 1", userid1, "index 1: ", index1);
+            console.log("Userid 2", userid2, "index 2: ", index2);
             var channelname = {
                 userid1: userid1,
                 userid2: userid2
