@@ -29,6 +29,37 @@ app.get("/getuid", async (req, res) => {
         release();
     }
 });
+
+app.post("/user/remove/:userId/:country", (req, res) => {
+    const { userId, country } = req.params;
+
+    // Get the index of the country
+    const countryIndex = getCountryIndex(country);
+
+    // Check if the country index is valid
+    if (countryIndex === -1) {
+        return res.status(400).json({ message: `Invalid country: ${country}` });
+    }
+
+    // Find the user in the users array corresponding to the country index
+    const userArray = users[countryIndex];
+    const userIndex = userArray.findIndex(user => user.userid === userId);
+
+    // Check if the user exists in the array
+    if (userIndex !== -1) {
+        // Remove the user from the array
+        userArray.splice(userIndex, 1);
+        // Send a response indicating success
+        console.log("userCountriesIndexes ", userCountriesIndexes);
+        return res.status(200).json({ message: `User ${userId} removed successfully from ${country}` });
+    }
+
+    // If the user with the specified userId is not found, send a 404 response
+    console.log("userCountriesIndexes ", userCountriesIndexes);
+    res.status(404).json({ message: `User ${userId} not found in ${country}` });
+});
+
+
 app.use("/channel", channelRouter);
 
 setInterval(() => { 
@@ -58,7 +89,7 @@ setInterval(() => {
                 if(userCountriesIndexesObj.quantity === 0){
                     userCountriesIndexes.splice(0, 1);
                 }
-                console.log(userCountriesIndexes);
+                console.log("userCountriesIndexes ", userCountriesIndexes);
             }
         }
     }else{
@@ -99,7 +130,7 @@ setInterval(() => {
                 var inx = userCountriesIndexes.indexOf(obj2);
                 userCountriesIndexes.splice(inx, 1);
             }
-            console.log(userCountriesIndexes);
+            console.log("userCountriesIndexes ", userCountriesIndexes);
         }
     }
     
