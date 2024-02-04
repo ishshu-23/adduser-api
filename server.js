@@ -43,6 +43,7 @@ setInterval(() => {
             var user2 = users[index].shift();
             var userid1 = user1.userid;
             var userid2 = user2.userid;
+            if(userid1 != userid2){
             console.log("User1 id", userid1, "index1: ", index1);
             console.log("User2 id", userid2, "index2: ", index2);
             var channelname = {
@@ -57,6 +58,7 @@ setInterval(() => {
                 userCountriesIndexes.splice(0, 1);
             }
             console.log(userCountriesIndexes);
+            }
         }
     }else{
         var i1 = Math.floor(Math.random() * userCountriesIndexes.length);
