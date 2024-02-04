@@ -3,7 +3,7 @@ const { Mutex } = require('async-mutex');
 
 const channelRouter = require("./routes/channel.router");
 const { userCountriesIndexes } = require('./models/countries.model.js');
-const { users } = require('./models/users.model.js');
+const { users, getCountryIndex } = require('./models/users.model.js');
 
 const app = express();
 
