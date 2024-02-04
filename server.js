@@ -51,6 +51,7 @@ app.post("/user/remove/:userId/:country", (req, res) => {
         // Remove the user from the array
         userArray.splice(userIndex, 1);
         // Send a response indicating success
+        console.log("users ", users);
         console.log("userCountriesIndexes ", userCountriesIndexes);
         return res.status(200).json({ message: `User ${userId} removed successfully from ${country}` });
     }
