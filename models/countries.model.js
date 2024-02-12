@@ -1,4 +1,4 @@
-var countries = [
+const countries = [
     'afghanistan',
     'albania',
     'algeria',
@@ -192,14 +192,10 @@ var countries = [
     'zambia',
     'zimbabwe'
   ];
-
-var userCountriesIndexes = []
-
-// console.log(getCountryIndex("china"));
-// console.log(getCountryIndex("albania"));
-// console.log(getCountryIndex("denmark"));
+  
+const userCountriesIndexes = [];
 
 module.exports = {
     countries,
     userCountriesIndexes
-}
+};
