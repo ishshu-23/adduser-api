@@ -1,14 +1,9 @@
-const { countries } = require('../models/countries.model.js');
-function getCountryIndex(country){
-    for (let index = 0; index < countries.length; index++) {
-        const element = countries[index];
-        if(element == country){
-            return index;
-        }
-    }
-}
+const { countries } = require('../models/countries.model');
 
+function getCountryIndex(country) {
+    return countries.indexOf(country.toLowerCase());
+}
 
 module.exports = {
     getCountryIndex
-}
+};
