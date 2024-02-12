@@ -3,7 +3,8 @@ const { Mutex } = require('async-mutex');
 
 const channelRouter = require("./routes/channel.router");
 const { userCountriesIndexes } = require('./models/countries.model.js');
-var { users } = require('./models/users.model.js');
+const { users } = require('./models/users.model.js');
+const { getCountryIndex } = require('./controllers/countryController.js');
 
 const app = express();
 
@@ -30,6 +31,33 @@ app.get("/getuid", async (req, res) => {
     res.json(uidJsonResponse);
 });
 app.use("/channel", channelRouter);
+
+app.post("/user/remove/:userId/:country", (req, res) => {
+    const { userId, country } = req.params;
+
+    // Get the index of the country
+    const countryIndex = getCountryIndex(country);
+
+    // Check if the country index is valid
+    if (countryIndex === -1) {
+        return res.status(400).json({ message: `Invalid country: ${country}` });
+    }
+
+    // Find the user in the users array corresponding to the country index
+    const userArray = users[countryIndex];
+    const userIndex = userArray.findIndex(user => user.userid === userId);
+
+    // Check if the user exists in the array
+    if (userIndex !== -1) {
+        // Remove the user from the array
+        userArray.splice(userIndex, 1);
+        // Send a response indicating success
+        return res.status(200).json({ message: `User ${userId} removed successfully from ${country}` });
+    }
+
+    // If the user with the specified userId is not found, send a 404 response
+    res.status(404).json({ message: `User ${userId} not found in ${country}` });
+});
 
 setInterval(() => { 
     // console.log(userCountriesIndexes);
