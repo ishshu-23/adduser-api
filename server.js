@@ -52,10 +52,12 @@ app.post("/user/remove/:userId/:country", (req, res) => {
         // Remove the user from the array
         userArray.splice(userIndex, 1);
         // Send a response indicating success
+        console.log("users after deletion: ", users);
         return res.status(200).json({ message: `User ${userId} removed successfully from ${country}` });
     }
 
     // If the user with the specified userId is not found, send a 404 response
+    console.log(`User ${userId} not found in ${country}`);
     res.status(404).json({ message: `User ${userId} not found in ${country}` });
 });
 
