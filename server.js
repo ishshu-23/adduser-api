@@ -93,7 +93,9 @@ setInterval(() => {
                     userid1: user1.userid,
                     userid2: user2.userid
                 };
-
+                console.log("channelname: ", channelname);
+                console.log("user1: ", user1);
+                console.log("user2: ", user2);
                 console.log("Same Country User1 id", user1.userid, "index1: ", index);
                 console.log("Same Country User2 id", user2.userid, "index2: ", index);
 
