@@ -51,9 +51,20 @@ app.post("/user/remove/:userId/:country", (req, res) => {
     if (userIndex !== -1) {
         // Remove the user from the array
         userArray.splice(userIndex, 1);
+
+        // Update the quantity in userCountriesIndexes
+        const countryInfoIdx = userCountriesIndexes.findIndex(entry => entry.index === countryIndex);
+        userCountriesIndexes[countryInfoIdx].quantity--;
+
+        // If the quantity becomes zero, remove the entry from userCountriesIndexes
+        if (userCountriesIndexes[countryInfoIdx].quantity === 0) {
+            userCountriesIndexes.splice(countryInfoIdx, 1);
+        }
+
         // Send a response indicating success
         console.log(`User ${userId} removed successfully from ${country}`);
         console.log("users post deletion: ", users);
+        console.log("userCountriesIndexes post deletion: ", userCountriesIndexes);
         return res.status(200).json({ message: `User ${userId} removed successfully from ${country}` });
     }
 
